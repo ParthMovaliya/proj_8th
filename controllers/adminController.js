@@ -319,7 +319,7 @@ exports.updateAppAds = catchAsyncError(async (req, res, next) => {
     const { _id, packageName, dirPath, newValue } = req.body;
     // console.log(_id, packageName, dirPath)
     // console.log(newValue)
-    const app = await AllApps.findOneAndUpdate({ _id: _id }, { $set: { appAds: newValue, dirPath } }, { new: true })
+    const app = await AllApps.findOneAndUpdate({ _id: _id }, { $set: { appAds: newValue, dirPath } }, { new: true });
     // // const allUsers = await User.find({ role: { $ne: 'admin' } });
 
     //make folder here
@@ -350,6 +350,10 @@ exports.updateAppAds = catchAsyncError(async (req, res, next) => {
     //         });
     //     }
     // *--});
+    res.status(200).json({
+        message: "All Ads saved!",
+        newApp: app
+    });
 });
 
 //update One App
