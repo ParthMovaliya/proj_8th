@@ -323,33 +323,33 @@ exports.updateAppAds = catchAsyncError(async (req, res, next) => {
     // // const allUsers = await User.find({ role: { $ne: 'admin' } });
 
     //make folder here
-    const savePath = path.join(__dirname, '..', process.env.DIR_PATH, dirPath);
-    if (!fs.existsSync(savePath)) {
-        fs.mkdirSync(savePath, { recursive: true });
-    }
+    // const savePath = path.join(__dirname, '..', process.env.DIR_PATH, dirPath);
+    // if (!fs.existsSync(savePath)) {
+    //     fs.mkdirSync(savePath, { recursive: true });
+    // }
 
-    let saveName = packageName.replace(/\./g, '_');
+    //-- let saveName = packageName.replace(/\./g, '_');
     // const filteredValue = Object.keys(newValue)
     //     .filter(key => newValue[key] !== null && newValue[key] !== "")
     //     .reduce((obj, key) => {
     //         obj[key] = newValue[key];
     //         return obj;
     //     }, {});
-    const data = JSON.stringify(newValue);
-    const filePath = path.join(savePath, `${saveName}.json`);
-    fs.writeFile(filePath, data, function (err) {
-        if (err) {
-            // console.log(err)
-            res.status(500).json({
-                message: `Error at making '${saveName}' folder!`,
-            });
-        } else {
-            res.status(200).json({
-                message: "All Ads saved!",
-                newApp: app
-            });
-        }
-    });
+    //-- const data = JSON.stringify(newValue);
+    //-- const filePath = path.join(savePath, `${saveName}.json`);
+    //--* fs.writeFile(filePath, data, function (err) {
+    //     if (err) {
+    //         // console.log(err)
+    //         res.status(500).json({
+    //             message: `Error at making '${saveName}' folder!`,
+    //         });
+    //     } else {
+    //         res.status(200).json({
+    //             message: "All Ads saved!",
+    //             newApp: app
+    //         });
+    //     }
+    // *--});
 });
 
 //update One App
