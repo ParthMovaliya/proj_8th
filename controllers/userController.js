@@ -27,7 +27,11 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   }
   const user = await User.findOne({ email }).select("+password");
   if (!user) {
-    return next(new ErrorHandler("User not found", 401));
+    res.status(401).json({
+      message: "User not found!"
+    });
+    // return sendToken(user, 200, res);
+    // return next(new ErrorHandler("User not found", 401));
   }
   const { name, email: useremail, ...other } = user;
   const isPasswordMatch = await user.comparePassword(password);
