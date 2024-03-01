@@ -36,10 +36,10 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { name, email: useremail, ...other } = user;
   const isPasswordMatch = await user.comparePassword(password);
   if (!isPasswordMatch) {
-    // res.status(401).json({
-    //   message: "User not found!"
-    // });
-    return next(new ErrorHandler("Invalid Email and Password", 401));
+    return res.status(401).json({
+      message: "User not found!"
+    });
+    // return next(new ErrorHandler("Invalid Email and Password", 401));
   }
   await LoginHistory.create({
     name,
